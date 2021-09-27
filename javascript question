@@ -1,0 +1,38 @@
+var incomingData = parseInt(prompt("enter number"));
+
+const isPrimeNumber = (num) => {
+  let sqrtnum = Math.floor(Math.sqrt(num));
+  let prime = num !== 1;
+  for (let i = 2; i < sqrtnum + 1; i++) {
+    if (num % i === 0) {
+      prime = false;
+      break;
+    }
+  }
+  return prime;
+}
+const getNextPrime = (number = 1) => {
+  while (!isPrimeNumber(++number)) {}
+  return number;
+};
+
+function Is_balzabar(inputData) {
+  var postivieExpr = 1;
+  var negativeExpr = 1;
+  var n;
+  while (postivieExpr < inputData || negativeExpr < inputData) {
+    n = getNextPrime(n)
+    postivieExpr = n * (n + 19);
+    negativeExpr = n * (n - 19);
+    console.log("** input: ", inputData, "** n:", n, "** results", postivieExpr, negativeExpr)
+    if (postivieExpr === inputData || negativeExpr === inputData) {
+      alert("Number is belazar")
+      break
+    }
+  }
+  if (postivieExpr > inputData && negativeExpr > inputData) {
+    alert("Number is not belazar")
+  }
+}
+
+Is_balzabar(incomingData)
